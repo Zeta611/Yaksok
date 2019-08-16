@@ -65,8 +65,7 @@ class Promise<Value> {
         switch result {
         case .success(let value):
           do {
-            let other = try block(value)
-            resolve(.success(other))
+            resolve(.success(try block(value)))
           } catch {
             resolve(.failure(error))
           }
@@ -86,15 +85,7 @@ class Promise<Value> {
         switch result {
         case .success(let value):
           do {
-            let promise = try block(value)
-            promise.promisedCallbacks.append { result in
-              switch result {
-              case .success(let other):
-                resolve(.success(other))
-              case .failure(let error):
-                resolve(.failure(error))
-              }
-            }
+            try block(value).promisedCallbacks.append { resolve($0) }
           } catch {
             resolve(.failure(error))
           }
