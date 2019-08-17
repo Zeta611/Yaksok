@@ -1,6 +1,6 @@
 //
-//  YaksokTests.swift
-//  YaksokTests
+//  PromiseSpec.swift
+//  PromiseSpec
 //
 //  Created by Jaeho Lee on 2019/08/17.
 //  Copyright © 2019 Jay Lee. All rights reserved.
@@ -10,9 +10,7 @@ import Nimble
 import Quick
 @testable import Yaksok
 
-class YaksokTests: QuickSpec {
-
-  enum TestError: Error { case always, never }
+class PromiseSpec: QuickSpec {
 
   func wait(for timeInterval: TimeInterval = 0.1, body: @escaping () -> Void) {
     DispatchQueue.global(qos: .userInteractive)
@@ -415,6 +413,36 @@ class YaksokTests: QuickSpec {
           }
         }
       }
+
+      context("when used with network requests") {
+        it("should handle login requests") {
+          let username = "Promise"
+          let password = "yaksok"
+          waitUntil(timeout: 5) { done in
+            User.login(username: username, password: password)
+              .done {
+                expect($0).to(equal(User(username: username, password: password)))
+                done()
+              }
+              .catch { _ in
+                expect { fatalError() }.toNot(throwAssertion())
+              }
+          }
+
+          waitUntil(timeout: 5) { done in
+            User.login(username: username, password: "foo")
+              .done { _ in
+                expect { fatalError() }.toNot(throwAssertion())
+              }
+              .catch {
+                expect($0 as? User.UserError).to(equal(.passwordError))
+                done()
+              }
+          }
+        }
+      }
     }
   }
+
+  enum TestError: Error { case always, never }
 }

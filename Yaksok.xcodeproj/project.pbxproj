@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		21A81D98B3E52CA3F05CA964 /* Pods_YaksokTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E01EFE109C1537A057B680 /* Pods_YaksokTests.framework */; };
+		69B4AEC32307B5370060CBA3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B4AEC22307B5370060CBA3 /* User.swift */; };
 		69F139E62307246800B137E9 /* Yaksok.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F139DC2307246700B137E9 /* Yaksok.framework */; };
-		69F139EB2307246800B137E9 /* YaksokTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F139EA2307246800B137E9 /* YaksokTests.swift */; };
+		69F139EB2307246800B137E9 /* PromiseSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F139EA2307246800B137E9 /* PromiseSpec.swift */; };
 		69F139ED2307246800B137E9 /* Yaksok.h in Headers */ = {isa = PBXBuildFile; fileRef = 69F139DF2307246700B137E9 /* Yaksok.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		69F139F72307249A00B137E9 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F139F62307249A00B137E9 /* Promise.swift */; };
 		69F139F92307273500B137E9 /* String+*.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F139F82307273500B137E9 /* String+*.swift */; };
@@ -30,11 +31,12 @@
 		15A8A03C4247B76FF36B0F6F /* Pods-YaksokTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YaksokTests.release.xcconfig"; path = "Target Support Files/Pods-YaksokTests/Pods-YaksokTests.release.xcconfig"; sourceTree = "<group>"; };
 		1A60CE1B0B7B85B4C504C322 /* Pods_Yaksok.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yaksok.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68938FD4E8D6F3D5163D3814 /* Pods-YaksokTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YaksokTests.debug.xcconfig"; path = "Target Support Files/Pods-YaksokTests/Pods-YaksokTests.debug.xcconfig"; sourceTree = "<group>"; };
+		69B4AEC22307B5370060CBA3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		69F139DC2307246700B137E9 /* Yaksok.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Yaksok.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69F139DF2307246700B137E9 /* Yaksok.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Yaksok.h; sourceTree = "<group>"; };
 		69F139E02307246700B137E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69F139E52307246800B137E9 /* YaksokTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YaksokTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		69F139EA2307246800B137E9 /* YaksokTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YaksokTests.swift; sourceTree = "<group>"; };
+		69F139EA2307246800B137E9 /* PromiseSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseSpec.swift; sourceTree = "<group>"; };
 		69F139EC2307246800B137E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69F139F62307249A00B137E9 /* Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
 		69F139F82307273500B137E9 /* String+*.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+*.swift"; sourceTree = "<group>"; };
@@ -109,7 +111,8 @@
 		69F139E92307246800B137E9 /* YaksokTests */ = {
 			isa = PBXGroup;
 			children = (
-				69F139EA2307246800B137E9 /* YaksokTests.swift */,
+				69F139EA2307246800B137E9 /* PromiseSpec.swift */,
+				69B4AEC22307B5370060CBA3 /* User.swift */,
 				69F139EC2307246800B137E9 /* Info.plist */,
 			);
 			path = YaksokTests;
@@ -310,7 +313,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69F139EB2307246800B137E9 /* YaksokTests.swift in Sources */,
+				69B4AEC32307B5370060CBA3 /* User.swift in Sources */,
+				69F139EB2307246800B137E9 /* PromiseSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

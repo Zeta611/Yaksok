@@ -38,24 +38,23 @@ class Promise<Value> {
   }
 
 
-  /// The provided block executes when the promise is fulfilled, but cannot be
+  /// The provided block executes when the promise is fulfilled, and should be
   /// further chained.
   @discardableResult
-  func done(block: @escaping (Value) -> Void) -> Promise<Void> {
+  func done(block: @escaping (Value) -> Void) -> Self {
     doneCallbacks.append(block)
     runBlocksIfResolved()
-    return Promise<Void> { $0(.success(())) }
+    return self
   }
 
 
-  /// The provided block executes when the promise is rejected, and cannot be
+  /// The provided block executes when the promise is rejected, and should be
   /// further chained.
   @discardableResult
-  func `catch`(block: @escaping (Error) -> Void) -> Promise<Void> {
+  func `catch`(block: @escaping (Error) -> Void) -> Self {
     catchCallbacks.append(block)
     runBlocksIfResolved()
-    // Should be changed
-    return Promise<Void> { $0(.success(())) }
+    return self
   }
 
 
@@ -110,17 +109,17 @@ class Promise<Value> {
     guard case let .resolved(result) = state else { return }
     queue.async {
       self.promisedCallbacks.forEach { $0(result) }
+      self.promisedCallbacks.removeAll()
 
       switch result {
       case .success(let value):
         self.doneCallbacks.forEach { $0(value) }
+        self.doneCallbacks.removeAll()
+
       case .failure(let error):
         self.catchCallbacks.forEach { $0(error) }
+        self.catchCallbacks.removeAll()
       }
-
-      self.promisedCallbacks.removeAll()
-      self.doneCallbacks.removeAll()
-      self.catchCallbacks.removeAll()
     }
   }
 
